@@ -34,6 +34,9 @@ export const BRIDGE_PATH = {
 };
 
 export const PLAYER_PATH = {
+  open: '[',
+  close: ']',
+  seperator: '|',
   success: 'O',
   failed: 'X',
   nothing: ' ',
