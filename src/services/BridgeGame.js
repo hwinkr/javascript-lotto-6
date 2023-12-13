@@ -29,7 +29,7 @@ class BridgeGame {
     const upperBlock = block.trim().toUpperCase();
     this.#player.addPlayerPath(upperBlock);
     const recentPlayerPosition = this.#player.getRecentPlayerPosition();
-    const canCrossBridge = this.#bridge.canCrossBridge(recentPlayerPosition, block);
+    const canCrossBridge = this.#bridge.canCrossBridge(recentPlayerPosition, upperBlock);
     const isFinished = this.#bridge.checkFinished(recentPlayerPosition, upperBlock);
     const playerPath = this.#player.darwPlayerPath(canCrossBridge);
 
