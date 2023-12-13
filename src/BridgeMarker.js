@@ -12,10 +12,11 @@ import InvalidInputException from './exceptions/InvalidInputException.js';
 
 const BridgeMaker = {
   validateBridgeSize(size) {
-    if (!(typeof size === 'number') || Number.isNaN(size)) {
+    const numericSize = Number(size);
+    if (!(typeof numericSize === 'number') || Number.isNaN(numericSize)) {
       throw new InvalidInputException(ERROR_MESSAGES.invalidBridgeSize);
     }
-    if (size < BRIDGE_SIZE_RANGE.min || size > BRIDGE_SIZE_RANGE.max) {
+    if (numericSize < BRIDGE_SIZE_RANGE.min || numericSize > BRIDGE_SIZE_RANGE.max) {
       throw new InvalidInputException(ERROR_MESSAGES.invalidBridgeSize);
     }
   },
@@ -25,7 +26,7 @@ const BridgeMaker = {
    * @return {string[]} 입력받은 길이에 해당하는 다리 모양. 위 칸이면 U, 아래 칸이면 D로 표현해야 한다.
    */
   makeBridge(size, generateRandomNumber) {
-    this.validateBridgeSize(Number(size));
+    this.validateBridgeSize(size);
     const bridge = Array.from({ length: size }).reduce((accBridge) => {
       const randomNumber = generateRandomNumber();
       const path = randomNumber === BRIDGE_PATH_NUMBER.down ? BRIDGE_PATH.down : BRIDGE_PATH.up;
